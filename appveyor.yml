@@ -28,7 +28,7 @@ build_script:
 - cmd: >-
     cd C:\projects
     
-    git clone -b windows https://github.com/runkit7/runkit7.git
+    git clone -b master https://github.com/runkit7/runkit7.git
     
     cd runkit7
     
