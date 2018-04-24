@@ -27,7 +27,9 @@ build_script:
     
     cd runkit7-2
     
-    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk && cd php-sdk
+    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk
+    
+    cd php-sdk
           
     bin\task.exe phpsdk-vc15-x64.bat
     
