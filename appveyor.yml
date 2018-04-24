@@ -29,7 +29,7 @@ build_script:
     
     git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk && cd php-sdk
           
-    invoke phpsdk-vc15-x64.bat
+    phpsdk-vc15-x64.bat | Out-File -Encoding "ASCII" task.bat    
     
     C:\projects\runkit7-2\php-sdk\bin\phpsdk_buildtree phpdev
     
