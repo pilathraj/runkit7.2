@@ -36,7 +36,10 @@ build_script:
     
     cd build
     
-    cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=\projects\output -DCMAKE_BUILD_TYPE=Release ..
+   
+    buildconf
+    
+    configure --enable-runkit
     
     nmake
     
