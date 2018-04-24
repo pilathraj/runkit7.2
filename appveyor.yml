@@ -28,7 +28,7 @@ install:
     
     cd php-sdk
           
-    phpsdk-vc15-x64.bat exit /b 1      
+    phpsdk-vc15-x64.bat exit /b 0      
 
 build_script:
 # runkit7
