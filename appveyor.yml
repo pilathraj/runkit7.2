@@ -19,10 +19,7 @@ install:
 - cmd: cinst wget
 - cmd: >-
     "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
-
-build_script:
-# runkit7
-- cmd: >-
+    
     cd C:\projects     
     
     cd runkit7-2
@@ -31,8 +28,15 @@ build_script:
     
     cd php-sdk
           
-    bin\task.exe phpsdk-vc15-x64.bat
+    bin\task.exe phpsdk-vc15-x64.bat   
+
+build_script:
+# runkit7
+- cmd: >-
+    cd C:\projects     
     
+    cd runkit7-2
+            
     C:\projects\runkit7-2\php-sdk\bin\phpsdk_buildtree phpdev
     
     cd phpdev
