@@ -33,7 +33,8 @@ build_script:
     
     cd phpdev
     
-        
+    dir
+    
     cd x64
     
     mkdir pecl
