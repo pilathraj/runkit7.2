@@ -1,0 +1,50 @@
+version: '{branch}.{build}'
+branches:
+  only:
+  - master
+  - appveyor
+  - w32
+  - windows
+
+image: Visual Studio 2017
+
+environment:
+  PHP_SDK_BINARY_TOOLS_VER: php-sdk-2.1.2
+  matrix:
+    - PHP_VER: 7.2.2
+      VC_VER: vc15
+      ARCH: x86
+    - PHP_VER: 7.2.2
+      VC_VER: vc15
+      ARCH: x64
+
+install:
+- cmd: cinst wget
+- cmd: >-
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
+
+build_script:
+# runkit7
+- cmd: >-
+    cd C:\projects
+    
+    git clone -b windows https://github.com/runkit7/runkit7.git
+    
+    cd runkit7
+    
+    mkdir build
+    
+    cd build
+    
+    cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=\projects\output -DCMAKE_BUILD_TYPE=Release ..
+    
+    nmake
+    
+    nmake install
+
+#test_script:
+#- cmd: php.exe /projects/php-src/run-tests.php /projects/php-src/ext/mustache -q --show-diff
+artifacts:
+  - path: bin
+    name: master
+    type: zip
