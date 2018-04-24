@@ -33,7 +33,7 @@ build_script:
     
     cd phpdev
     
-    dir
+    cd vc14
     
     cd x64
     
