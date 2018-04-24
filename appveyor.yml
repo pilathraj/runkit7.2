@@ -43,7 +43,7 @@ build_script:
     
     nmake
     
-    nmake install
+  
 
 #test_script:
 #- cmd: php.exe /projects/php-src/run-tests.php /projects/php-src/ext/mustache -q --show-diff
