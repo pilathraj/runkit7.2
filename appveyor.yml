@@ -23,17 +23,13 @@ install:
 build_script:
 # runkit7
 - cmd: >-
-    cd C:\projects
+    cd C:\projects     
     
-    mkdir runkit7
+    cd runkit7-2
     
-    cd runkit7
-    
-    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7\php-sdk && cd php-sdk
-    
-    C:\projects\runkit7\php-sdk\phpsdk-vc15-x64.bat
-    
-    C:\projects\runkit7\php-sdk\bin\phpsdk_buildtree phpdev
+    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk && cd php-sdk
+          
+    C:\projects\runkit7-2\php-sdk\bin\phpsdk_buildtree phpdev
     
     cd phpdev
     
