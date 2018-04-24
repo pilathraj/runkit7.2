@@ -33,8 +33,7 @@ build_script:
     
     cd phpdev
     
-    cd vc15
-    
+        
     cd x64
     
     mkdir pecl
