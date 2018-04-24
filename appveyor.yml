@@ -27,22 +27,39 @@ build_script:
 # runkit7
 - cmd: >-
     cd C:\projects
+    
     mkdir runkit7
+    
     cd runkit7
-    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7\php-sdk && cd php-sdk    
+    
+    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7\php-sdk && cd php-sdk
+    
     phpsdk-vc15-x64.bat
+    
     bin\phpsdk_buildtree phpdev
+    
     cd phpdev
+    
     cd vc15
+    
     cd x64
+    
     mkdir pecl
+    
     cd pecl
+    
     git clone -b master https://github.com/runkit7/runkit7.git
+    
     cd ..
-    git clone https://github.com/php/php-src.git -b PHP-7.2.2 && cd php-src   
-    buildconf    
-    configure --enable-runkit    
-    nmake   
+    
+    git clone https://github.com/php/php-src.git -b PHP-7.2.2 && cd php-src
+    
+    buildconf
+    
+    configure --enable-runkit
+    
+    nmake
+    
   
 
 #test_script:
