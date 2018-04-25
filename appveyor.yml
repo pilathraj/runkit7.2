@@ -98,6 +98,7 @@ after_build:
                 $dir = $dir + $env:VC+'\'
                 $dir = $dir + $env:ARCH+'\'
                 $dir = $dir + 'pecl\'
+                $dir = $dir + 'runkit7\'
                 $dir = $dir + 'Release'
                 if ('1' -eq $env:TS) { $dir = $dir + '_TS' }
                 & 7z a c:\$zip_bname $dir\php_runkit.dll $dir\php_runkit.pdb c:\projects\runkit7-2\LICENSE
