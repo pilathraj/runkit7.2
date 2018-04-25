@@ -80,7 +80,7 @@ build_script:
                 $env:PATH = 'c:\build-cache\' + $dname1 + ';' + $env:PATH              
                 $here = (Get-Item -Path "." -Verbose).FullName
                 $runner = 'c:\build-cache\php-sdk-' + $env:BIN_SDK_VER + '\phpsdk' + '-' + $env:VC + '-' + $env:ARCH + '.bat'
-                $task = $here + '\task.bat'
+                $task = $here + '\appveyor\task.bat'
                 & $runner -t $task
 artifacts:
   - path: bin
