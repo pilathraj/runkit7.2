@@ -82,7 +82,7 @@ build_script:
                 cd pecl             
                
                 if ((Test-Path c:\build-cache\runkit7)) {
-                    move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                    move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 }
                 
                 cd c:\projects\runkit7-2
@@ -95,7 +95,7 @@ build_script:
 
 after_build:
         ps: |
-                cd c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                cd c:\projects\runkit7-2\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 dir
                 <#
                 $ts_part = 'ts'
