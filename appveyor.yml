@@ -59,7 +59,7 @@ build_script:
     
     git clone https://github.com/php/php-src.git -b PHP-7.2.2 && cd php-src
     
-    phpsdk-vc15-x64.bat -cur_console:d:C:\projects\runkit7-2\phpdev\vc15\x64\php-src
+    C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat -cur_console:d:C:\projects\runkit7-2\phpdev\vc15\x64\php-src
     
     buildconf
     
