@@ -27,8 +27,13 @@ install:
     git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk
     
     cd php-sdk
-          
-    phpsdk-vc15-x64.bat exit /b 0      
+    
+    echo "@echo off"
+    
+    echo "call phpsdk-starter.bat -c vc15 -a x64"
+   
+    exit /b 0
+       
 
 build_script:
 # runkit7
