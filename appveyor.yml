@@ -53,14 +53,28 @@ build_script:
                         7z x c:\build-cache\$bname -oc:\build-cache
                         move c:\build-cache\$dname0 c:\build-cache\$dname1
                 }                
-                cd c:\projects\runkit7-2                
-                git clone -b master https://github.com/runkit7/runkit7.git
-                if (-not (Test-Path c:\projects\runkit7-2\runkit-7)) {
+                cd c:\projects\runkit7-2
+                $cname = 'runkit7.zip';                
+                $dname = 'runkit7';                
+                if (-not (Test-Path c:\build-cache\$cname)) {
+                    Invoke-WebRequest "https://github.com/runkit7/runkit7/archive/master.zip" -OutFile "c:\build-cache\$cname"
+                    
+                    if (-not (Test-Path c:\build-cache\$dname)) {
+                        7z x c:\build-cache\$cname -oc:\build-cache
+                        move c:\build-cache\runkit7-master c:\projects\runkit7-2\$dname
+                    }
+                    
+                }
+                
+                if (-not (Test-Path c:\projects\runkit7-2\runkit7)) {
                    mkdir phpdev
+                   cd phpdev
                    mkdir $env:VC
+                   cd $env:VC
                    mkdir $env:ARCH
+                   cd $env:ARCH
                    mkdir pecl
-                   move c:\projects\runkit7-2\runkit-7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit-7
+                   move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 }
                 
                 $env:PATH = 'c:\build-cache\' + $dname1 + ';' + $env:PATH              
