@@ -76,11 +76,12 @@ build_script:
                    mkdir pecl
                    move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 }
+                cd c:\projects\runkit7-2
                 
                 $env:PATH = 'c:\build-cache\' + $dname1 + ';' + $env:PATH              
                 $here = (Get-Item -Path "." -Verbose).FullName
                 $runner = 'c:\build-cache\php-sdk-' + $env:BIN_SDK_VER + '\phpsdk' + '-' + $env:VC + '-' + $env:ARCH + '.bat'
-                $task = $here + 'c:\projects\runkit7-2\appveyor\task.bat'
+                $task = $here + '\appveyor\task.bat'
                 & $runner -t $task
 artifacts:
   - path: bin
