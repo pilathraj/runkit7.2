@@ -55,13 +55,13 @@ build_script:
                 }                
                 cd c:\projects\runkit7-2
                 $cname = 'runkit7.zip';                
-                $dname = 'runkit7';                
+                $dname = 'runkit7-master';                
                 if (-not (Test-Path c:\build-cache\$cname)) {
                     Invoke-WebRequest "https://github.com/runkit7/runkit7/archive/master.zip" -OutFile "c:\build-cache\$cname"
                     
                     if (-not (Test-Path c:\build-cache\$dname)) {
                         7z x c:\build-cache\$cname -oc:\build-cache
-                        move c:\build-cache\runkit7-master c:\projects\runkit7-2\$dname
+                        move c:\build-cache\runkit7-master c:\projects\runkit7-2\runkit7
                     }
                     
                 }
@@ -87,4 +87,4 @@ after_build:
         ps: |
                 $ts_part = 'ts'
                 if ('0' -eq $env:TS) { $ts_part = 'nts' }
-                cd c:\projects\runkit7-2\phpdev\$env:VC\$env:ARCH\pecl\runkit7\
+                cd c:\projects\runkit7-2\phpdev\vc15\x64\pecl\runkit7\
