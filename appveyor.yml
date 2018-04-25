@@ -28,7 +28,8 @@ install:
     
     C:\projects\runkit7-2\php-sdk\bin\phpsdk_setvars.bat
     
-    cd php-sdk
+    C:\projects\runkit7-2\php-sdk\bin\task.exe C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat
+    
        
 
 build_script:
@@ -42,7 +43,7 @@ build_script:
     
     cd phpdev
     
-    dir
+    rename vc14 vc15
     
     cd vc15
     
