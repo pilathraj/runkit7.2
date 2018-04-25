@@ -70,14 +70,7 @@ build_script:
                 $task = $here + '\task.bat'
                 & $runner -t $task
 
-after_build:
-        ps: |
-                $ts_part = 'ts'
-                if ('0' -eq $env:TS) { $ts_part = 'nts' }
-                $zip_bname = 'php_ast-' + $env:APPVEYOR_REPO_COMMIT.substring(0, 8) + '-' + $env:PHP_VER.substring(0, 3) + '-' + $ts_part + '-' + $env:VC + '-' + $env:ARCH + '.zip'
-                $dir = 'c:\projects\ast\';
-                if ('x64' -eq $env:ARCH) { $dir = $dir + 'x64\' }
-                $dir = $dir + 'Release'
-                if ('1' -eq $env:TS) { $dir = $dir + '_TS' }
-                & 7z a c:\$zip_bname $dir\php_ast.dll $dir\php_ast.pdb c:\projects\ast\LICENSE
-                Push-AppveyorArtifact c:\$zip_bname
+artifacts:
+  - path: bin
+    name: master
+    type: zip
