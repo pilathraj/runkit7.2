@@ -53,7 +53,7 @@ build_script:
                         7z x c:\build-cache\$bname -oc:\build-cache
                         move c:\build-cache\$dname0 c:\build-cache\$dname1
                 }                
-                cd c:\projects\runkit7-2
+                
                 $cname = 'runkit7.zip';                
                 $dname = 'runkit7-master';                
                 if (-not (Test-Path c:\build-cache\$cname)) {
@@ -61,22 +61,25 @@ build_script:
                     
                     if (-not (Test-Path c:\build-cache\$dname)) {
                         7z x c:\build-cache\$cname -oc:\build-cache
-                        move c:\build-cache\runkit7-master c:\projects\runkit7-2\runkit7
+                        
                     }
                     
                 }
                 
-                if (-not (Test-Path c:\projects\runkit7-2\runkit7)) {
-                   mkdir phpdev
-                   cd phpdev
-                   mkdir $env:VC
-                   cd $env:VC
-                   mkdir $env:ARCH
-                   cd $env:ARCH
-                   mkdir pecl
-                   cd pecl
-                   dir
+                if ( (Test-Path c:\build-cache\$dname)) {
+                    move c:\build-cache\$dname c:\projects\runkit7-2\runkit7
                 }
+               
+                cd c:\projects\runkit7-2
+                mkdir phpdev
+                cd phpdev
+                mkdir $env:VC
+                cd $env:VC
+                mkdir $env:ARCH
+                cd $env:ARCH
+                mkdir pecl
+                cd pecl             
+               
                 if ((Test-Path c:\build-cache\runkit7)) {
                     move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 }
