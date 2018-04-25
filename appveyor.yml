@@ -28,7 +28,7 @@ install:
     
     cd php-sdk    
         
-    start /b C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat 
+    start C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat 
    
     
        
