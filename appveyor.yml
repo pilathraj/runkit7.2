@@ -89,5 +89,5 @@ after_build:
         ps: |
                 $ts_part = 'ts'
                 if ('0' -eq $env:TS) { $ts_part = 'nts' }
-                cd c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                cd c:\projects\runkit7-2\phpdev\$env:VC\$env:ARCH\pecl\runkit7
                 dir
