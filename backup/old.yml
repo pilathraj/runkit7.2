@@ -1,0 +1,77 @@
+version: '{branch}.{build}'
+branches:
+  only:
+  - master
+  - appveyor
+  - w32
+  - windows
+
+image: Visual Studio 2017
+
+environment:
+  PHP_SDK_BINARY_TOOLS_VER: php-sdk-2.1.2
+  matrix:    
+    - PHP_VER: 7.2.2
+      VC_VER: vc15
+      ARCH: x64
+
+install:
+- cmd: cinst wget
+- cmd: >-
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
+    
+    cd C:\projects     
+    
+    cd runkit7-2
+    
+    git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk
+    
+    C:\projects\runkit7-2\php-sdk\bin\phpsdk_setvars.bat
+    
+    
+    
+       
+
+build_script:
+# runkit7
+- cmd: >-
+    cd C:\projects     
+    
+    cd runkit7-2
+            
+    C:\projects\runkit7-2\php-sdk\bin\phpsdk_buildtree phpdev
+    
+    cd phpdev
+    
+    rename vc14 vc15
+    
+    cd vc15
+    
+    cd x64
+    
+    mkdir pecl
+    
+    cd pecl
+    
+    git clone -b master https://github.com/runkit7/runkit7.git
+    
+    cd ..
+    
+    git clone https://github.com/php/php-src.git -b PHP-7.2.2 && cd php-src
+    
+    C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat -cur_console:d:C:\projects\runkit7-2\phpdev\vc15\x64\php-src
+    
+    buildconf
+    
+    configure --enable-runkit
+    
+    nmake
+    
+  
+
+#test_script:
+#- cmd: php.exe /projects/php-src/run-tests.php /projects/php-src/ext/mustache -q --show-diff
+artifacts:
+  - path: bin
+    name: master
+    type: zip
