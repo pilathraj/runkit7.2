@@ -32,7 +32,7 @@ install:
     
     echo call phpsdk-starter.bat -c vc15 -a x64
    
-    exit /b 0
+    
        
 
 build_script:
