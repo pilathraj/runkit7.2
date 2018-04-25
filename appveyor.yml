@@ -5,7 +5,7 @@ branches:
         only:
                 - master
 
-clone_folder:  c:\projects\ast
+clone_folder:  c:\projects\runkit7-2
 
 install:
         ps: |
@@ -63,13 +63,11 @@ build_script:
                    move c:\projects\runkit7-2\runkit-7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit-7
                 }
                 
-                $env:PATH = 'c:\build-cache\' + $dname1 + ';' + $env:PATH
-                
+                $env:PATH = 'c:\build-cache\' + $dname1 + ';' + $env:PATH              
                 $here = (Get-Item -Path "." -Verbose).FullName
                 $runner = 'c:\build-cache\php-sdk-' + $env:BIN_SDK_VER + '\phpsdk' + '-' + $env:VC + '-' + $env:ARCH + '.bat'
                 $task = $here + '\task.bat'
                 & $runner -t $task
-
 artifacts:
   - path: bin
     name: master
