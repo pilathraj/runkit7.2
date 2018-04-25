@@ -26,11 +26,7 @@ install:
     
     git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk
     
-    cd php-sdk    
-        
-    start C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat 
-   
-    
+    cd php-sdk
        
 
 build_script:
@@ -43,6 +39,8 @@ build_script:
     C:\projects\runkit7-2\php-sdk\bin\phpsdk_buildtree phpdev
     
     cd phpdev
+    
+    rename vc14 vc15
     
     cd vc15
     
