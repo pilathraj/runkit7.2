@@ -28,9 +28,9 @@ install:
     
     cd php-sdk
     
-    echo "@echo off"
+    echo @echo off
     
-    echo "call phpsdk-starter.bat -c vc15 -a x64"
+    echo call phpsdk-starter.bat -c vc15 -a x64
    
     exit /b 0
        
