@@ -26,6 +26,8 @@ install:
     
     git clone https://github.com/Microsoft/php-sdk-binary-tools.git C:\projects\runkit7-2\php-sdk
     
+    C:\projects\runkit7-2\php-sdk\bin\phpsdk_setvars.bat
+    
     cd php-sdk
        
 
@@ -40,7 +42,7 @@ build_script:
     
     cd phpdev
     
-    rename vc14 vc15
+    dir
     
     cd vc15
     
