@@ -28,7 +28,7 @@ install:
     
     C:\projects\runkit7-2\php-sdk\bin\phpsdk_setvars.bat
     
-    C:\projects\runkit7-2\php-sdk\bin\task.exe C:\projects\runkit7-2\php-sdk\phpsdk-vc15-x64.bat
+    
     
        
 
@@ -58,6 +58,8 @@ build_script:
     cd ..
     
     git clone https://github.com/php/php-src.git -b PHP-7.2.2 && cd php-src
+    
+    phpsdk-vc15-x64.bat -cur_console:d:C:\projects\runkit7-2\phpdev\vc15\x64\php-src
     
     buildconf
     
