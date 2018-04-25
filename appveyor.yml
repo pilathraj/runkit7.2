@@ -59,11 +59,12 @@ build_script:
                 if (-not (Test-Path c:\build-cache\$cname)) {
                     Invoke-WebRequest "https://github.com/runkit7/runkit7/archive/master.zip" -OutFile "c:\build-cache\$cname"
                     
-                    if (-not (Test-Path c:\build-cache\$dname)) {
-                        7z x c:\build-cache\$cname -oc:\build-cache
-                        
-                    }
+                   
                     
+                }
+                
+                if ((Test-Path c:\build-cache\$cname)) {
+                    7z x c:\build-cache\$cname -oc:\build-cache\$dname                        
                 }
                 
                 if ( (Test-Path c:\build-cache\$dname)) {
@@ -94,9 +95,12 @@ build_script:
 
 after_build:
         ps: |
+                cd c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                dir
+                <#
                 $ts_part = 'ts'
                 if ('0' -eq $env:TS) { $ts_part = 'nts' }
-                $zip_bname = 'php_ast-' + $env:APPVEYOR_REPO_COMMIT.substring(0, 8) + '-' + $env:PHP_VER.substring(0, 3) + '-' + $ts_part + '-' + $env:VC + '-' + $env:ARCH + '.zip'
+                $zip_bname = 'php_runkit-' + $env:APPVEYOR_REPO_COMMIT.substring(0, 8) + '-' + $env:PHP_VER.substring(0, 3) + '-' + $ts_part + '-' + $env:VC + '-' + $env:ARCH + '.zip'
                 $dir = 'c:\projects\runkit7-2\phpdev\';
                 $dir = $dir + $env:VC+'\'
                 $dir = $dir + $env:ARCH+'\'
@@ -106,3 +110,4 @@ after_build:
                 if ('1' -eq $env:TS) { $dir = $dir + '_TS' }
                 & 7z a c:\$zip_bname $dir\php_runkit.dll $dir\php_runkit.pdb c:\projects\runkit7-2\LICENSE
                 Push-AppveyorArtifact c:\$zip_bname
+                #>
