@@ -74,7 +74,9 @@ build_script:
                    mkdir $env:ARCH
                    cd $env:ARCH
                    mkdir pecl
-                   move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                   if ((Test-Path c:\build-cache\runkit7)) {
+                    move c:\projects\runkit7-2\runkit7 c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                   }
                 }
                 cd c:\projects\runkit7-2
                 
@@ -87,4 +89,5 @@ after_build:
         ps: |
                 $ts_part = 'ts'
                 if ('0' -eq $env:TS) { $ts_part = 'nts' }
-                cd c:\projects\runkit7-2\phpdev\vc15\x64\pecl\runkit7\
+                cd c:\projects\runkit7-2\runkit-7\phpdev\$env:VC\$env:ARCH\pecl\runkit7
+                dir
